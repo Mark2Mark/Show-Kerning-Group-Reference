@@ -2,7 +2,7 @@
 
 ## Plugin for Glyphsapp
 
-This is a Plugin for the [Glyphs font editor](http://glyphsapp.com/). It simply visualizes the base glyph which is set as the kerning group for the currently active glyph. The left one to the left, the right one to the – well, you got it. This can be usefull if you are flipping through your glyphs and immedeately need a visual reference of how your kerning groups look like. It works best when used with a single glyph, but it is designed to at least work okay-ish in strings of text. If you call your kerning groups anything that does not exist in your font, it will not show anything there of course. Since it works in real time, you will get instant feedback when you define kerning groups in the edit view.
+This is a Plugin for the [Glyphs font editor](http://glyphsapp.com/). It displays all members of the currently acive glyph’s kerning group to either side in minitaure. This can be usefull if you are flipping through your glyphs and immedeately need a visual reference of how your kerning groups look like. If you see elements sticking out of the righthandside group, you know there might be a group member set wrong. Same for th left side. It works best when used with a single glyph, but it is designed to at least work okay-ish in strings of text. It is somehow related to the built-in feature "Show Group Members" by Georg Seifert, but this one does not need the caret to sit between a certain pair. Since it works in real time, you will get instant feedback when you define kerning groups in the edit view.
 
 ### How to use
 
