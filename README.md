@@ -10,9 +10,9 @@ Download or clone the whole `Glyphsapp-Plugins`repo (it will contain more plugin
 
 ### Examples
 
-![Show Kerning Group Reference Demo](https://raw.githubusercontent.com/DeutschMark/Glyphsapp-Plugins/2a265ddd14ef7f6a6399423e991c3588b1fdc3b3/Screenshots/KerningGroupReference/KGR%2002.png?raw=true "Show Kerning Group Reference Demo")
+![Show Kerning Group Reference Demo](https://raw.githubusercontent.com/DeutschMark/Show-Kerning-Group-Reference/12fd9ffaa0447f742dabce60a407ece582e1d6b2/Screenshots/KGR%2001.png?raw=true "Show Kerning Group Reference Demo")
 
-![Show Kerning Group Reference Demo](https://raw.githubusercontent.com/DeutschMark/Glyphsapp-Plugins/2a265ddd14ef7f6a6399423e991c3588b1fdc3b3/Screenshots/KerningGroupReference/KGR%2001.png?raw=true "Show Kerning Group Reference Demo")
+![Show Kerning Group Reference Demo](https://raw.githubusercontent.com/DeutschMark/Show-Kerning-Group-Reference/12fd9ffaa0447f742dabce60a407ece582e1d6b2/Screenshots/KGR%2002.png?raw=true "Show Kerning Group Reference Demo")
 
 
 ### Known issues
