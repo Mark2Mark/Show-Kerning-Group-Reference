@@ -1,8 +1,7 @@
 # Show Kerning Group Reference
 
-## Plugin for Glyphsapp
+*This is a plugin for the [Glyphs font editor](http://glyphsapp.com/).*  
 
-This is a Plugin for the [Glyphs font editor](http://glyphsapp.com/).  
 It displays all members of the currently acive glyph’s kerning group to either side in minitaure and realtime.  
 Usefull when setting up kerning groups and getting visual feedback right away.  
 If you see elements sticking out of the right group, you know there might be a group member set wrong. Same for th left side.  
@@ -28,15 +27,15 @@ When ever you need it, toggle `Show * Kerning Group Reference` from the view men
 ![Show Kerning Group Reference Demo](https://raw.githubusercontent.com/DeutschMark/Show-Kerning-Group-Reference/12fd9ffaa0447f742dabce60a407ece582e1d6b2/Screenshots/KGR%2002.png?raw=true "Show Kerning Group Reference Demo")
 
 
-#### Known issues
+##### Known issues
 
 - None so far
 
-#### Pull Requests
+##### Pull Requests
 
 Feel free to comment or pull requests for any improvements.
 
-#### License
+##### License
 
 Copyright 2015 [Mark Frömberg](http://www.markfromberg.com/) *@DeutschMark*
 
