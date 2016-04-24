@@ -5,35 +5,35 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
-	<string>ShowKerningGroupReference</string>
+	<string>Show Kerning Group Reference</string>
 	<key>CFBundleExecutable</key>
-	<string>ShowKerningGroupReference</string>
+	<string>plugin</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.markfromberg.ShowKerningGroupReference</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>ShowKerningGroupReference</string>
+	<string>Show Kerning Group Reference</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>5</string>
+	<string>6.1</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.5</string>
+	<string>1.0.6</string>
 	<key>UpdateFeedURL</key>
-	<string>https://raw.githubusercontent.com/DeutschMark/Show-Kerning-Group-Reference/master/ShowKerningGroupReference.glyphsReporter/Contents/Info.plist</string>
+	<string>https://raw.githubusercontent.com/mark2mark/Show-Kerning-Group-Reference/master/ShowKerningGroupReference.glyphsReporter/Contents/Info.plist</string>
 	<key>productPageURL</key>
-	<string>https://github.com/DeutschMark/Show-Kerning-Group-Reference</string>
+	<string>https://github.com/mark2mark/Show-Kerning-Group-Reference</string>
 	<key>productReleaseNotes</key>
-	<string>New Repository Location</string>
+	<string>Update to new Plugin SDK, Added Context menu to open Tab with KG</string>
 	<key>LSHasLocalizedDisplayName</key>
 	<false/>
 	<key>NSAppleScriptEnabled</key>
 	<false/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright, by Mark Frömberg (@DeutschMark), 2015</string>
+	<string>Copyright, Mark Frömberg (@mark2mark), 2015–2016</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
