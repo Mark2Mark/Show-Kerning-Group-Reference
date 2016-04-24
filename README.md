@@ -22,9 +22,9 @@ When ever you need it, toggle `Show * Kerning Group Reference` from the view men
 
 ### Examples
 
-![Show Kerning Group Reference Demo](https://raw.githubusercontent.com/DeutschMark/Show-Kerning-Group-Reference/12fd9ffaa0447f742dabce60a407ece582e1d6b2/Screenshots/KGR%2001.png?raw=true "Show Kerning Group Reference Demo")
+![Show Kerning Group Reference Demo](https://raw.githubusercontent.com/Mark2Mark/Show-Kerning-Group-Reference/12fd9ffaa0447f742dabce60a407ece582e1d6b2/Screenshots/KGR%2001.png?raw=true "Show Kerning Group Reference Demo")
 
-![Show Kerning Group Reference Demo](https://raw.githubusercontent.com/DeutschMark/Show-Kerning-Group-Reference/12fd9ffaa0447f742dabce60a407ece582e1d6b2/Screenshots/KGR%2002.png?raw=true "Show Kerning Group Reference Demo")
+![Show Kerning Group Reference Demo](https://raw.githubusercontent.com/Mark2Mark/Show-Kerning-Group-Reference/12fd9ffaa0447f742dabce60a407ece582e1d6b2/Screenshots/KGR%2002.png?raw=true "Show Kerning Group Reference Demo")
 
 
 ##### Known issues
@@ -37,7 +37,7 @@ Feel free to comment or pull requests for any improvements.
 
 ##### License
 
-Copyright 2015 [Mark Frömberg](http://www.markfromberg.com/) *@DeutschMark*
+Copyright 2015 [Mark Frömberg](http://www.markfromberg.com/) *@Mark2Mark*
 
 Made possible with the GlyphsSDK by Georg Seifert (@schriftgestalt) and Rainer Erich Scheichelbauer (@mekkablue).
 
