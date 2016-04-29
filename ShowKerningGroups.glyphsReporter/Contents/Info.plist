@@ -5,15 +5,15 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
-	<string>Show Kerning Group Reference</string>
+	<string>Show Kerning Groups</string>
 	<key>CFBundleExecutable</key>
 	<string>plugin</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.markfromberg.ShowKerningGroupReference</string>
+	<string>com.markfromberg.ShowKerningGroups</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Show Kerning Group Reference</string>
+	<string>Show Kerning Groups</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleSignature</key>
@@ -33,11 +33,11 @@
 	<key>NSAppleScriptEnabled</key>
 	<false/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright, Mark Frömberg (@mark2mark), 2015–2016</string>
+	<string>Mark Frömberg (@mark2mark)</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
-	<string>ShowKerningGroupReference</string>
+	<string>ShowKerningGroups</string>
 	<key>PyMainFileNames</key>
 	<array>
 		<string>__boot__</string>

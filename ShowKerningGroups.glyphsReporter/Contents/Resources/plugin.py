@@ -16,7 +16,7 @@ from GlyphsApp.plugins import *
 from vanilla import *
 import traceback
 
-class ShowKerningGroupReference(ReporterPlugin):
+class ShowKerningGroups(ReporterPlugin):
 
 	def settings(self):
 
@@ -43,7 +43,7 @@ class ShowKerningGroupReference(ReporterPlugin):
 		]
 		###################################
 
-		self.menuName = Glyphs.localize({'en': u'* Kerning Group Reference'})
+		self.menuName = Glyphs.localize({'en': u'* Kerning Groups'})
 		
 
 	def background(self, layer):  # def foreground(self, layer):
