@@ -20,28 +20,21 @@ class ShowKerningGroups(ReporterPlugin):
 
 	def settings(self):
 
-		###################################
-		## Context Menu:
+		# ###################################
+		# ## Context Menu:
 		self.nameLeft = 'Tab with LKG Members'
 		self.nameRight = 'Tab with RKG Members'
 		self.nameToggler = 'Toggle Fill/Stroke'
 		self.toggle = 1
 
-		# Create Vanilla window and group with controls
-		viewWidth = 320 # 150
-		viewHeight = 80
-		self.contextMenu = Window((viewWidth, viewHeight))
-		self.contextMenu.group = Group((0, 0, viewWidth, viewHeight)) # (0, 0, viewWidth, viewHeight)
-		self.contextMenu.group.line = HorizontalLine((10, 10, -10, 1))
-		self.contextMenu.group.buttonL = Button((10, 20, -10, 18), self.nameLeft, sizeStyle="small", callback=self.LKGTab)
-		self.contextMenu.group.buttonR = Button((10, 40, -10, 18), self.nameRight, sizeStyle="small", callback=self.RKGTab)
-		self.contextMenu.group.buttonToggle = Button((10, 60, -10, 18), self.nameToggler, sizeStyle="small", callback=self.toggleFillStroke)
-
-		## Define the menu
-		self.generalContextMenus = [
-		    {"view": self.contextMenu.group.getNSView()}
-		]
-		###################################
+		try:
+			self.generalContextMenus = [
+			{"name": self.nameLeft, "action": self.LKGTab },
+			{"name": self.nameRight, "action": self.RKGTab },
+			{"name": self.nameToggler, "action": self.toggleFillStroke },
+			]
+		except:
+			print traceback.format_exc()		
 
 		self.menuName = Glyphs.localize({'en': u'* Kerning Groups'})
 		
