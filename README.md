@@ -29,7 +29,7 @@ When ever you need it, toggle `Show * Kerning Group Reference` from the view men
 
 ##### Known issues
 
-- None so far
+- Currently it doesn’t distinguish the correct sides, but displays any group member to any side. Working on the fix.
 
 ##### Pull Requests
 
