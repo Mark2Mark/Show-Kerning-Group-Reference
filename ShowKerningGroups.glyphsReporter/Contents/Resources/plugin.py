@@ -36,7 +36,7 @@ class ShowKerningGroups(ReporterPlugin):
 		except:
 			print traceback.format_exc()		
 
-		self.menuName = Glyphs.localize({'en': u'* Kerning Groups'})
+		self.menuName = Glyphs.localize({'en': u'Kerning Groups'})
 		
 
 	def background(self, layer):  # def foreground(self, layer):
