@@ -26,7 +26,7 @@ When ever you need it, toggle `Show * Kerning Group Reference` from the view men
 
 <img src="https://raw.githubusercontent.com/Mark2Mark/Show-Kerning-Group-Reference/12fd9ffaa0447f742dabce60a407ece582e1d6b2/Screenshots/KGR%2001.png" alt="Show Kerning Group Reference Demo" height="350px">
 
-<img src="(https://raw.githubusercontent.com/Mark2Mark/Show-Kerning-Group-Reference/12fd9ffaa0447f742dabce60a407ece582e1d6b2/Screenshots/KGR%2002.png" alt="Show Kerning Group Reference Demo" height="350px">
+<img src="https://raw.githubusercontent.com/Mark2Mark/Show-Kerning-Group-Reference/12fd9ffaa0447f742dabce60a407ece582e1d6b2/Screenshots/KGR%2002.png" alt="Show Kerning Group Reference Demo" height="350px">
 
 </p>
 
