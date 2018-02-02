@@ -13,12 +13,8 @@ It is somehow related to the built-in feature `"Show Group Members"` by Georg Se
 
 ### Install
 
-1. Download or clone this repository.
-2. Either:  
-   Double click the `.glyphsReporter` file and confirm the dialogue in Glyphsapp to install.  
-   Or:  
-   Copy the `.glyphsReporter` into your Glyphsapp Plugins folder (eg. `/Library/Application\ Support/Glyphs/Plugins`). You can use subfolders (e.g. to sort plugins by author) there.
-3. Restart Glyphs.
+1. Install via the Plugin Manager in Glyphs.
+2. Restart Glyphs.
 
 ### How to use
 
