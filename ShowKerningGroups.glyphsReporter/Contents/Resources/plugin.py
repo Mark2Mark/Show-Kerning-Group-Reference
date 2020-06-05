@@ -101,19 +101,19 @@ class ShowKerningGroups(ReporterPlugin):
 
 		try:
 			thisAlpha = 0.8
-			thisAlpha = .8/len(KGGlyphs)
+			thisAlpha = .8 / len(KGGlyphs)
 			if thisAlpha < self.floatLimit:
 				thisAlpha = self.floatLimit
 			NSColor.colorWithCalibratedRed_green_blue_alpha_(self.R, self.G, self.B, thisAlpha).set()
 			for KGGlyph in KGGlyphs:
 				self.KGGlyphActiveMaster = KGGlyph.layers[self.activeMasterId]
 				KGWidth = self.KGGlyphActiveMaster.width * self.scaler
-				self.position( KGWidth )
+				self.position(KGWidth)
 
 				if group == "leftGroup":
-					self.switcher( self.leftPosition, self.rightPosition, self.KGGlyphActiveMaster, self.direction )
+					self.switcher(self.leftPosition, self.rightPosition, self.KGGlyphActiveMaster, self.direction)
 				if group == "rightGroup":
-					self.switcher( self.rightPosition, self.leftPosition, self.KGGlyphActiveMaster, self.direction )
+					self.switcher(self.rightPosition, self.leftPosition, self.KGGlyphActiveMaster, self.direction)
 
 		except:
 			print(traceback.format_exc())
@@ -125,9 +125,9 @@ class ShowKerningGroups(ReporterPlugin):
 		glyphsOfGroup = []
 		for glyph in self.allGlyphs():
 			if glyph.leftKerningGroup == KG:
-				glyphsOfGroup.append( self.Font.glyphForName_(glyph.name) )
+				glyphsOfGroup.append(self.Font.glyphForName_(glyph.name))
 			if glyph.rightKerningGroup == KG:
-				glyphsOfGroup.append( self.Font.glyphForName_(glyph.name) )
+				glyphsOfGroup.append(self.Font.glyphForName_(glyph.name))
 		return glyphsOfGroup
 
 
@@ -136,7 +136,7 @@ class ShowKerningGroups(ReporterPlugin):
 
 		self.Glyph = layer.parent
 		self.Font = self.Glyph.parent
-		masters = self.Font.masters		
+		masters = self.Font.masters
 		thisMaster = self.Font.selectedFontMaster
 		self.activeMasterId = thisMaster.id
 		self.direction = self.Font.currentTab.writingDirection()
@@ -148,7 +148,6 @@ class ShowKerningGroups(ReporterPlugin):
 			self.R, self.G, self.B = 0, 0.5, 0.5
 			self.floatLimit = 0.04
 			
-
 			### LEFT
 			if layer.parent.leftKerningGroup:
 				self.LKG = layer.parent.leftKerningGroup
@@ -190,10 +189,10 @@ class ShowKerningGroups(ReporterPlugin):
 		except:
 			thisBezierPathWithComponent = layer.copyDecomposedLayer().bezierPath
 		scale = NSAffineTransform.transform()
-		scale.translateXBy_yBy_( positionX, positionY )
-		scale.scaleBy_( .2 )
+		scale.translateXBy_yBy_(positionX, positionY)
+		scale.scaleBy_(0.2)
 		
-		thisBezierPathWithComponent.transformUsingAffineTransform_( scale )
+		thisBezierPathWithComponent.transformUsingAffineTransform_(scale)
 		
 		if thisBezierPathWithComponent:
 			if self.toggle == 1:
