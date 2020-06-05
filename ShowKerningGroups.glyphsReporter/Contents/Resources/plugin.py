@@ -14,6 +14,7 @@
 
 from __future__ import division, print_function, unicode_literals
 from GlyphsApp.plugins import *
+from GlyphsApp import LTR, RTL
 from vanilla import *
 import traceback
 
@@ -78,12 +79,12 @@ class ShowKerningGroups(ReporterPlugin):
 		self.leftPosition = -distance - self.margin, self.xHeight/2
 		self.rightPosition = self.thisWidth + self.margin+10 + distance - KGWidth, self.xHeight/2
 
-		if direction == 0:
-			self.drawKerningGroupReference( KGGlyphActiveMaster, *A )
-		if direction == 1:
-			self.drawKerningGroupReference( KGGlyphActiveMaster, *B )
 	@objc.python_method
 	def switcher(self, A, B, KGGlyphActiveMaster, direction):
+		if direction == LTR:
+			self.drawKerningGroupReference(KGGlyphActiveMaster, *A)
+		if direction == RTL:
+			self.drawKerningGroupReference(KGGlyphActiveMaster, *B)
 
 	@objc.python_method
 	def allGlyphs(self):
@@ -138,9 +139,9 @@ class ShowKerningGroups(ReporterPlugin):
 		masters = self.Font.masters		
 		thisMaster = self.Font.selectedFontMaster
 		self.activeMasterIndex = masters.index(thisMaster)
-		self.direction = self.Font.tabs[-1].writingDirection() ### <-- crash issue at Line Break?
 
 
+		self.direction = self.Font.currentTab.writingDirection()
 		try:
 			self.thisWidth = layer.width
 			self.xHeight = thisMaster.xHeight
