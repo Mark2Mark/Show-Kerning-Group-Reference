@@ -12,12 +12,14 @@
 ###########################################################################################################
 
 
+from __future__ import division, print_function, unicode_literals
 from GlyphsApp.plugins import *
 from vanilla import *
 import traceback
 
 class ShowKerningGroups(ReporterPlugin):
 
+	@objc.python_method
 	def settings(self):
 
 		# ###################################
@@ -29,20 +31,22 @@ class ShowKerningGroups(ReporterPlugin):
 
 		try:
 			self.generalContextMenus = [
-			{"name": self.nameLeft, "action": self.LKGTab },
-			{"name": self.nameRight, "action": self.RKGTab },
-			{"name": self.nameToggler, "action": self.toggleFillStroke },
+			{"name": self.nameLeft, "action": self.LKGTab_},
+			{"name": self.nameRight, "action": self.RKGTab_},
+			{"name": self.nameToggler, "action": self.toggleFillStroke_},
 			]
 		except:
-			print traceback.format_exc()		
+			print(traceback.format_exc())
 
 		self.menuName = Glyphs.localize({'en': u'Kerning Groups'})
 		
 
+	@objc.python_method
 	def background(self, layer):  # def foreground(self, layer):
 		self.generateKGInfo(layer)
 
-	def openTab( self, side ):
+	@objc.python_method
+	def openTab(self, side):
 		if side == "left":
 			# tabString = "/" + "\n/".join([g.name for g in self.LKGGlyphs])
 			thisLKG = self.KGGlyphsGen(self.LKG)
@@ -54,37 +58,40 @@ class ShowKerningGroups(ReporterPlugin):
 		self.Font.newTab(tabString)
 
 
-
-	def LKGTab(self, sender):
+	def LKGTab_(self, sender):
 		self.openTab("left")
 
-	def RKGTab(self, sender):
+	def RKGTab_(self, sender):
 		self.openTab("right")
 
-	def toggleFillStroke(self, sender):
+	def toggleFillStroke_(self, sender):
 		try:
 			self.toggle = self.toggle ^ 1
 			self.RefreshView()
 		except:
-			print traceback.format_exc()
+			print(traceback.format_exc())
 
 
-	def position( self, KGWidth):
+	@objc.python_method
+	def position(self, KGWidth):
 		distance = 120
 		self.leftPosition = -distance - self.margin, self.xHeight/2
 		self.rightPosition = self.thisWidth + self.margin+10 + distance - KGWidth, self.xHeight/2
 
-	def switcher( self, A, B, KGGlyphActiveMaster, direction ):
 		if direction == 0:
 			self.drawKerningGroupReference( KGGlyphActiveMaster, *A )
 		if direction == 1:
 			self.drawKerningGroupReference( KGGlyphActiveMaster, *B )
+	@objc.python_method
+	def switcher(self, A, B, KGGlyphActiveMaster, direction):
 
+	@objc.python_method
 	def allGlyphs(self):
 		for g in self.Font.glyphs:
 			yield g
 
 
+	@objc.python_method
 	def superimpose(self, group):
 		if group == "leftGroup":
 			KGGlyphs = self.KGGlyphsGen(self.LKG)
@@ -108,9 +115,10 @@ class ShowKerningGroups(ReporterPlugin):
 					self.switcher( self.rightPosition, self.leftPosition, self.KGGlyphActiveMaster, self.direction )
 
 		except:
-			print traceback.format_exc()
+			print(traceback.format_exc())
 
 
+	@objc.python_method
 	def KGGlyphsGen(self, KG):
 		# Generator not working with len(list(generator)), but len is needed fpr the alpha
 		glyphsOfGroup = []
@@ -122,7 +130,8 @@ class ShowKerningGroups(ReporterPlugin):
 		return glyphsOfGroup
 
 
-	def generateKGInfo( self, layer ):
+	@objc.python_method
+	def generateKGInfo(self, layer):
 
 		self.Glyph = layer.parent
 		self.Font = self.Glyph.parent
@@ -149,8 +158,8 @@ class ShowKerningGroups(ReporterPlugin):
 					LKGGlyph = self.Font.glyphForName_(self.LKG)
 					self.superimpose("leftGroup")
 				except:
-					print traceback.format_exc()
-
+					print(traceback.format_exc())
+		
 			### Right
 			if layer.parent.rightKerningGroup:
 				self.RKG = layer.parent.rightKerningGroup
@@ -158,13 +167,13 @@ class ShowKerningGroups(ReporterPlugin):
 					RKGGlyph = self.Font.glyphForName_(self.RKG)
 					self.superimpose("rightGroup")
 				except:
-					print traceback.format_exc()
+					print(traceback.format_exc())
+	
+		except:
+			print(traceback.format_exc())
 
 
-		except Exception as e:
-			print "generateKGInfo: %s" % str(e)
-
-
+	@objc.python_method
 	def RefreshView(self):
 		try:
 			Glyphs = NSApplication.sharedApplication()
@@ -175,7 +184,8 @@ class ShowKerningGroups(ReporterPlugin):
 			pass
 
 
-	def drawKerningGroupReference( self, layer, positionX, positionY ):
+	@objc.python_method
+	def drawKerningGroupReference(self, layer, positionX, positionY):
 		try:
 			thisBezierPathWithComponent = layer.copyDecomposedLayer().bezierPath()
 		except:
