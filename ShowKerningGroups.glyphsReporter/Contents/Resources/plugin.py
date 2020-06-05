@@ -106,7 +106,7 @@ class ShowKerningGroups(ReporterPlugin):
 				thisAlpha = self.floatLimit
 			NSColor.colorWithCalibratedRed_green_blue_alpha_(self.R, self.G, self.B, thisAlpha).set()
 			for KGGlyph in KGGlyphs:
-				self.KGGlyphActiveMaster = KGGlyph.layers[self.activeMasterIndex]
+				self.KGGlyphActiveMaster = KGGlyph.layers[self.activeMasterId]
 				KGWidth = self.KGGlyphActiveMaster.width * self.scaler
 				self.position( KGWidth )
 
@@ -138,9 +138,7 @@ class ShowKerningGroups(ReporterPlugin):
 		self.Font = self.Glyph.parent
 		masters = self.Font.masters		
 		thisMaster = self.Font.selectedFontMaster
-		self.activeMasterIndex = masters.index(thisMaster)
-
-
+		self.activeMasterId = thisMaster.id
 		self.direction = self.Font.currentTab.writingDirection()
 		try:
 			self.thisWidth = layer.width
