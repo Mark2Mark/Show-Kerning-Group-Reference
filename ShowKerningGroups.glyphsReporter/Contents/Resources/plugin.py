@@ -14,7 +14,7 @@
 
 from __future__ import division, print_function, unicode_literals
 from GlyphsApp.plugins import *
-from GlyphsApp import LTR, RTL
+from GlyphsApp import GSLTR as LTR, GSRTL as RTL
 from vanilla import *
 import traceback
 
