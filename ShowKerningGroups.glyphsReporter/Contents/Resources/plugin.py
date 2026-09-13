@@ -94,12 +94,6 @@ class ShowKerningGroups(ReporterPlugin):
 			self.drawKerningGroupReference(KGGlyphActiveMaster, *B)
 
 	@objc.python_method
-	def allGlyphs(self):
-		for g in self.Font.glyphs:
-			yield g
-
-
-	@objc.python_method
 	def superimpose(self, group):
 		if group == "leftGroup":
 			KGGlyphs = self.KGGlyphsGen(self.LKG)
@@ -128,9 +122,8 @@ class ShowKerningGroups(ReporterPlugin):
 
 	@objc.python_method
 	def KGGlyphsGen(self, KG):
-		# Generator not working with len(list(generator)), but len is needed fpr the alpha
 		glyphsOfGroup = []
-		for glyph in self.allGlyphs():
+		for glyph in self.Font.glyphs:
 			if glyph.leftKerningGroup == KG:
 				glyphsOfGroup.append(self.Font.glyphForName_(glyph.name))
 			if glyph.rightKerningGroup == KG:
