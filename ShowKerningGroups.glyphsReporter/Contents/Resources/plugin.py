@@ -39,9 +39,9 @@ class ShowKerningGroups(ReporterPlugin):
 
 		try:
 			self.generalContextMenus = [
-			{"name": self.nameLeft, "action": self.LKGTab_},
-			{"name": self.nameRight, "action": self.RKGTab_},
-			{"name": self.nameToggler, "action": self.toggleFillStroke_},
+				{"name": self.nameLeft, "action": self.LKGTab_},
+				{"name": self.nameRight, "action": self.RKGTab_},
+				{"name": self.nameToggler, "action": self.toggleFillStroke_},
 			]
 		except:
 			print(traceback.format_exc())
