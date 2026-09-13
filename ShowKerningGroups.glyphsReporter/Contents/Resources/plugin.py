@@ -12,14 +12,18 @@
 ###########################################################################################################
 
 
-from __future__ import division, print_function, unicode_literals
-from GlyphsApp.plugins import *
+import objc
+from GlyphsApp.plugins import ReporterPlugin
+from GlyphsApp import Glyphs
 try:
-	from GlyphsApp import GSLTR as LTR, GSRTL as RTL
+	from GlyphsApp import GSLTR, GSRTL
 except:
-	from GlyphsApp import LTR, RTL
-from vanilla import *
+	from GlyphsApp import LTR as GSLTR, RTL as GSRTL  # type: ignore
+
+from Foundation import NSAffineTransform
+from AppKit import NSColor
 import traceback
+
 
 class ShowKerningGroups(ReporterPlugin):
 
@@ -43,7 +47,7 @@ class ShowKerningGroups(ReporterPlugin):
 			print(traceback.format_exc())
 
 		self.menuName = Glyphs.localize({'en': u'Kerning Groups'})
-		
+
 
 	@objc.python_method
 	def background(self, layer):  # def foreground(self, layer):
@@ -79,14 +83,14 @@ class ShowKerningGroups(ReporterPlugin):
 	@objc.python_method
 	def position(self, KGWidth):
 		distance = 120
-		self.leftPosition = -distance - self.margin, self.xHeight/2
-		self.rightPosition = self.thisWidth + self.margin+10 + distance - KGWidth, self.xHeight/2
+		self.leftPosition = -distance - self.margin, self.xHeight / 2
+		self.rightPosition = self.thisWidth + self.margin + 10 + distance - KGWidth, self.xHeight / 2
 
 	@objc.python_method
 	def switcher(self, A, B, KGGlyphActiveMaster, direction):
-		if direction == LTR:
+		if direction == GSLTR:
 			self.drawKerningGroupReference(KGGlyphActiveMaster, *A)
-		if direction == RTL:
+		if direction == GSRTL:
 			self.drawKerningGroupReference(KGGlyphActiveMaster, *B)
 
 	@objc.python_method
@@ -139,7 +143,7 @@ class ShowKerningGroups(ReporterPlugin):
 
 		self.Glyph = layer.parent
 		self.Font = self.Glyph.parent
-		masters = self.Font.masters
+		# masters = self.Font.masters
 		thisMaster = self.Font.selectedFontMaster
 		self.activeMasterId = thisMaster.id
 		self.direction = self.Font.currentTab.writingDirection()
@@ -150,26 +154,26 @@ class ShowKerningGroups(ReporterPlugin):
 			self.scaler = .2
 			self.R, self.G, self.B = 0, 0.5, 0.5
 			self.floatLimit = 0.04
-			
+
 			### LEFT
 			if layer.parent.leftKerningGroup:
 				self.LKG = layer.parent.leftKerningGroup
 
 				try:
-					LKGGlyph = self.Font.glyphForName_(self.LKG)
+					# LKGGlyph = self.Font.glyphForName_(self.LKG)
 					self.superimpose("leftGroup")
 				except:
 					print(traceback.format_exc())
-		
+
 			### Right
 			if layer.parent.rightKerningGroup:
 				self.RKG = layer.parent.rightKerningGroup
 				try:
-					RKGGlyph = self.Font.glyphForName_(self.RKG)
+					# RKGGlyph = self.Font.glyphForName_(self.RKG)
 					self.superimpose("rightGroup")
 				except:
 					print(traceback.format_exc())
-	
+
 		except:
 			print(traceback.format_exc())
 
@@ -177,7 +181,6 @@ class ShowKerningGroups(ReporterPlugin):
 	@objc.python_method
 	def RefreshView(self):
 		try:
-			Glyphs = NSApplication.sharedApplication()
 			currentTabView = Glyphs.font.currentTab
 			if currentTabView:
 				currentTabView.graphicView().setNeedsDisplay_(True)
@@ -194,12 +197,11 @@ class ShowKerningGroups(ReporterPlugin):
 		scale = NSAffineTransform.transform()
 		scale.translateXBy_yBy_(positionX, positionY)
 		scale.scaleBy_(0.2)
-		
+
 		thisBezierPathWithComponent.transformUsingAffineTransform_(scale)
-		
+
 		if thisBezierPathWithComponent:
 			if self.toggle == 1:
 				thisBezierPathWithComponent.fill()
 			if self.toggle == 0:
 				thisBezierPathWithComponent.stroke()
-
