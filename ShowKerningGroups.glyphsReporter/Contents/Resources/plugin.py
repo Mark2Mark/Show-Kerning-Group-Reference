@@ -48,23 +48,21 @@ class ShowKerningGroups(ReporterPlugin):
 
 		self.menuName = Glyphs.localize({'en': u'Kerning Groups'})
 
-
 	@objc.python_method
 	def background(self, layer):  # def foreground(self, layer):
 		self.generateKGInfo(layer)
 
 	@objc.python_method
 	def openTab(self, side):
-		if side == "left":
+		thisLKG, thisRKG = self.KGGlyphsGen()
+		if side == "left" and thisLKG:
 			# tabString = "/" + "\n/".join([g.name for g in self.LKGGlyphs])
-			thisLKG = self.KGGlyphsGen(self.LKG)
 			tabString = "/" + "\n/".join([g.name for g in thisLKG])
-		if side == "right":
+		if side == "right" and thisRKG:
 			# tabString = "/" + "\n/".join([g.name for g in self.RKGGlyphs])
-			thisRKG = self.KGGlyphsGen(self.RKG)
 			tabString = "/" + "\n/".join([g.name for g in thisRKG])
-		self.Font.newTab(tabString)
-
+		if tabString:
+			self.Font.newTab(tabString)
 
 	def LKGTab_(self, sender):
 		self.openTab("left")
@@ -94,11 +92,7 @@ class ShowKerningGroups(ReporterPlugin):
 			self.drawKerningGroupReference(KGGlyphActiveMaster, *B)
 
 	@objc.python_method
-	def superimpose(self, group):
-		if group == "leftGroup":
-			KGGlyphs = self.KGGlyphsGen(self.LKG)
-		if group == "rightGroup":
-			KGGlyphs = self.KGGlyphsGen(self.RKG)
+	def superimpose(self, KGGlyphs, group):
 
 		try:
 			thisAlpha = 0.8
@@ -111,9 +105,9 @@ class ShowKerningGroups(ReporterPlugin):
 				KGWidth = self.KGGlyphActiveMaster.width * self.scaler
 				self.position(KGWidth)
 
-				if group == "leftGroup":
+				if group == "left":
 					self.switcher(self.leftPosition, self.rightPosition, self.KGGlyphActiveMaster, self.direction)
-				if group == "rightGroup":
+				if group == "right":
 					self.switcher(self.rightPosition, self.leftPosition, self.KGGlyphActiveMaster, self.direction)
 
 		except:
@@ -121,14 +115,15 @@ class ShowKerningGroups(ReporterPlugin):
 
 
 	@objc.python_method
-	def KGGlyphsGen(self, KG):
-		glyphsOfGroup = []
+	def KGGlyphsGen(self):
+		glyphsOfGroupLeft = []
+		glyphsOfGroupRight = []
 		for glyph in self.Font.glyphs:
-			if glyph.leftKerningGroup == KG:
-				glyphsOfGroup.append(self.Font.glyphForName_(glyph.name))
-			if glyph.rightKerningGroup == KG:
-				glyphsOfGroup.append(self.Font.glyphForName_(glyph.name))
-		return glyphsOfGroup
+			if self.LKG and glyph.leftKerningGroup == self.LKG:
+				glyphsOfGroupLeft.append(self.Font.glyphForName_(glyph.name))
+			if self.RKG and glyph.rightKerningGroup == self.RKG:
+				glyphsOfGroupRight.append(self.Font.glyphForName_(glyph.name))
+		return glyphsOfGroupLeft, glyphsOfGroupRight
 
 
 	@objc.python_method
@@ -148,24 +143,17 @@ class ShowKerningGroups(ReporterPlugin):
 			self.floatLimit = 0.04
 
 			### LEFT
-			if layer.parent.leftKerningGroup:
-				self.LKG = layer.parent.leftKerningGroup
-
+			self.LKG = layer.parent.leftKerningGroup
+			self.RKG = layer.parent.rightKerningGroup
+			if self.LKG or self.RKG:
+				KGGlyphsLeft, KGGlyphsRight = self.KGGlyphsGen()
 				try:
-					# LKGGlyph = self.Font.glyphForName_(self.LKG)
-					self.superimpose("leftGroup")
+					if KGGlyphsLeft:
+						self.superimpose(KGGlyphsLeft, "left")
+					if KGGlyphsRight:
+						self.superimpose(KGGlyphsRight, "right")
 				except:
 					print(traceback.format_exc())
-
-			### Right
-			if layer.parent.rightKerningGroup:
-				self.RKG = layer.parent.rightKerningGroup
-				try:
-					# RKGGlyph = self.Font.glyphForName_(self.RKG)
-					self.superimpose("rightGroup")
-				except:
-					print(traceback.format_exc())
-
 		except:
 			print(traceback.format_exc())
 
