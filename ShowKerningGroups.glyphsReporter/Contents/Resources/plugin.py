@@ -135,11 +135,10 @@ class ShowKerningGroups(ReporterPlugin):
 	def generateKGInfo(self, layer):
 
 		self.Glyph = layer.parent
-		self.Font = self.Glyph.parent
-		# masters = self.Font.masters
-		thisMaster = self.Font.selectedFontMaster
+		self.Font = self.controller.parent
+		thisMaster = self.controller.activeMaster()
 		self.activeMasterId = thisMaster.id
-		self.direction = self.Font.currentTab.writingDirection()
+		self.direction = self.controller.direction
 		try:
 			self.thisWidth = layer.width
 			self.xHeight = thisMaster.xHeight
